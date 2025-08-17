@@ -27,6 +27,8 @@
       overflow-x: auto;
       border-radius: 5px;
       color: #00ff90;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     button.copy-btn {
@@ -48,23 +50,19 @@
 
   <h1>🔥 My Roblox Script Hub</h1>
 
-  <!-- Script 1 -->
+  <!-- Fly Script -->
   <div class="script">
-    <h2>AutoFarm.lua</h2>
-    <p>Automatically farms coins and XP in XYZ Game.</p>
-    <pre id="autofarm">-- AutoFarm Script
-while true do
-  wait(1)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Coin.CFrame
-end</pre>
-    <button class="copy-btn" onclick="copyToClipboard('autofarm')">📋 Copy</button>
+    <h2>Fly Script</h2>
+    <p>Load and run the Fly GUI script from GitHub.</p>
+    <pre id="flyscript">loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()</pre>
+    <button class="copy-btn" onclick="copyToClipboard('flyscript')">📋 Copy</button>
   </div>
 
-  <!-- Script 2 -->
+  <!-- ESP Script -->
   <div class="script">
     <h2>ESP.lua</h2>
     <p>Wallhack script that shows player locations.</p>
-    <pre id="loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()">-- ESP Script
+    <pre id="esp">-- ESP Script
 for i,v in pairs(game.Players:GetPlayers()) do
   if v ~= game.Players.LocalPlayer then
     local esp = Instance.new("BoxHandleAdornment", v.Character)
@@ -91,3 +89,4 @@ end</pre>
 
 </body>
 </html>
+
