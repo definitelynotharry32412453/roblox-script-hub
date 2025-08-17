@@ -24,40 +24,78 @@
       transition: color 0.4s ease, text-shadow 0.4s ease;
     }
 
+    /* Grid container for scripts */
+    .scripts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto 50px auto;
+    }
+
+    /* Each script "cube" */
     .script {
       background: #2a2a2a;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 195, 255, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
       cursor: default;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      height: 420px;
     }
 
     .script:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 195, 255, 0.6);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 195, 255, 0.6);
+    }
+
+    /* Image placeholder */
+    .script-img {
+      height: 140px;
+      background-color: #111;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0 0 10px #007f5f;
+    }
+
+    /* Content inside script card */
+    .script h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.4rem;
+      color: #00ffcc;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+
+    .script p {
+      margin: 0 0 12px 0;
+      flex-grow: 0;
+      color: #ccc;
+      font-size: 0.95rem;
     }
 
     pre {
       background-color: #111;
-      padding: 15px;
-      overflow-x: auto;
-      border-radius: 5px;
+      padding: 12px;
+      border-radius: 6px;
       color: #00ff90;
       white-space: pre-wrap;
       word-wrap: break-word;
       font-family: 'Courier New', Courier, monospace;
-      font-size: 14px;
-      margin-top: 10px;
-      user-select: text;
+      font-size: 13px;
+      margin: 0 0 15px 0;
+      flex-grow: 1;
+      overflow-y: auto;
       box-shadow: inset 0 0 10px #007f5f;
       transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
     }
 
     button.copy-btn {
-      margin-top: 12px;
-      padding: 8px 14px;
+      align-self: flex-start;
+      padding: 8px 16px;
       background-color: #00c3ff;
       color: #000;
       border: none;
@@ -124,6 +162,11 @@
       box-shadow: 0 0 25px rgba(0, 195, 255, 0.8);
     }
 
+    body.light .script-img {
+      background-color: #bbb;
+      box-shadow: inset 0 0 10px #339966;
+    }
+
     body.light pre {
       background-color: #ddd;
       color: #006633;
@@ -148,19 +191,23 @@
 
   <h1>🔥 My Roblox Script Hub</h1>
 
-  <!-- Fly Script -->
-  <div class="script">
-    <h2>Fly Script</h2>
-    <p>Load and run the Fly GUI script from GitHub.</p>
-    <pre id="flyscript">loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()</pre>
-    <button class="copy-btn" onclick="copyToClipboard('flyscript')">📋 Copy</button>
-  </div>
+  <div class="scripts-grid">
 
-  <!-- ESP Script -->
-  <div class="script">
-    <h2>ESP.lua</h2>
-    <p>Wallhack script that shows player locations.</p>
-    <pre id="esp">-- ESP Script
+    <!-- Fly Script -->
+    <div class="script">
+      <div class="script-img" style="background-image: url('https://i.imgur.com/8Km9tLL.png');"></div>
+      <h2>Fly Script</h2>
+      <p>Load and run the Fly GUI script from GitHub.</p>
+      <pre id="flyscript">loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()</pre>
+      <button class="copy-btn" onclick="copyToClipboard('flyscript')">📋 Copy</button>
+    </div>
+
+    <!-- ESP Script -->
+    <div class="script">
+      <div class="script-img" style="background-image: url('https://i.imgur.com/2yaf2wb.png');"></div>
+      <h2>ESP.lua</h2>
+      <p>Wallhack script that shows player locations.</p>
+      <pre id="esp">-- ESP Script
 for i,v in pairs(game.Players:GetPlayers()) do
   if v ~= game.Players.LocalPlayer then
     local esp = Instance.new("BoxHandleAdornment", v.Character)
@@ -171,7 +218,18 @@ for i,v in pairs(game.Players:GetPlayers()) do
     esp.Color3 = Color3.new(1, 0, 0)
   end
 end</pre>
-    <button class="copy-btn" onclick="copyToClipboard('esp')">📋 Copy</button>
+      <button class="copy-btn" onclick="copyToClipboard('esp')">📋 Copy</button>
+    </div>
+
+    <!-- Another Script (Example) -->
+    <div class="script">
+      <div class="script-img" style="background-image: url('https://i.imgur.com/ZXBtVw7.jpg');"></div>
+      <h2>Example Script</h2>
+      <p>This is an example of a third script with an image.</p>
+      <pre id="example">print("Hello, Roblox!")</pre>
+      <button class="copy-btn" onclick="copyToClipboard('example')">📋 Copy</button>
+    </div>
+
   </div>
 
   <script>
@@ -210,4 +268,3 @@ end</pre>
 
 </body>
 </html>
-
