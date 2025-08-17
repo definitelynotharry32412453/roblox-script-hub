@@ -9,38 +9,85 @@
       color: #fff;
       padding: 30px;
     }
+
     h1 {
       color: #00ffcc;
     }
+
     .script {
       background: #2a2a2a;
       padding: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       border-radius: 8px;
     }
-    a {
-      color: #00c3ff;
-      text-decoration: none;
+
+    pre {
+      background-color: #111;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 5px;
+      color: #00ff90;
     }
-    a:hover {
-      text-decoration: underline;
+
+    button.copy-btn {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #00c3ff;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button.copy-btn:hover {
+      background-color: #00a3cc;
     }
   </style>
 </head>
 <body>
+
   <h1>🔥 My Roblox Script Hub</h1>
 
-  <div class="fly script">
+  <!-- Script 1 -->
+  <div class="script">
     <h2>AutoFarm.lua</h2>
     <p>Automatically farms coins and XP in XYZ Game.</p>
-    <a href="scripts/AutoFarm.lua" download>⬇️ Download</a>
+    <pre id="autofarm">-- AutoFarm Script
+while true do
+  wait(1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Coin.CFrame
+end</pre>
+    <button class="copy-btn" onclick="copyToClipboard('autofarm')">📋 Copy</button>
   </div>
 
+  <!-- Script 2 -->
   <div class="script">
     <h2>ESP.lua</h2>
     <p>Wallhack script that shows player locations.</p>
-    <a href="scripts/ESP.lua" download>⬇️ Download</a>
+    <pre id="loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()">-- ESP Script
+for i,v in pairs(game.Players:GetPlayers()) do
+  if v ~= game.Players.LocalPlayer then
+    local esp = Instance.new("BoxHandleAdornment", v.Character)
+    esp.Adornee = v.Character:WaitForChild("HumanoidRootPart")
+    esp.AlwaysOnTop = true
+    esp.ZIndex = 10
+    esp.Size = Vector3.new(4, 6, 1)
+    esp.Color3 = Color3.new(1, 0, 0)
+  end
+end</pre>
+    <button class="copy-btn" onclick="copyToClipboard('esp')">📋 Copy</button>
   </div>
+
+  <script>
+    function copyToClipboard(id) {
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Copied to clipboard!');
+      }).catch(err => {
+        alert('Failed to copy text: ' + err);
+      });
+    }
+  </script>
 
 </body>
 </html>
